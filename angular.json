@@ -5,7 +5,11 @@
     "projects": {
         "Angular-learnjs-261023": {
             "projectType": "application",
-            "schematics": {},
+            "schematics": {
+                "@schematics/angular:interface": {
+                    "prefix": "I"
+                }
+            },
             "root": "",
             "sourceRoot": "src",
             "prefix": "app",
@@ -59,6 +63,14 @@
                                     "with": "src/environments/environment.qa.ts"
                                 }
                             ]
+                        },
+                        "testbazis": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.testbazis.ts"
+                                }
+                            ]
                         }
                     },
                     "defaultConfiguration": "production"
@@ -71,6 +83,12 @@
                         },
                         "development": {
                             "browserTarget": "Angular-learnjs-261023:build:development"
+                        },
+                        "testbazis": {
+                            "browserTarget": "Angular-learnjs-261023:build:testbazis",
+                            "ssl": true,
+                            "sslCert": "src/assets/ssl/localhost.cer",
+                            "sslKey": "src/assets/ssl/localhost.key"
                         }
                     },
                     "defaultConfiguration": "development"

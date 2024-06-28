@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Angular-learnjs-261023';
 
     test = 'тест для коммитаЮ пройдет ли';
@@ -22,4 +23,13 @@ export class AppComponent {
         '    at TypeScriptLanguagePluginFactory.create (C:\\Program Files\\JetBrains IntelliJ IDEA Ultimate 2020.1 x64\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\typescript\\ts-plugin.js:128:40)\n' +
         '    at Interface.anonymous> (C:\\Program Files\\JetBrains IntelliJ IDEA Ultimate 2020.1 x64\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\js-language-service.js:82:52)\n' +
         '    at Interface.emit (node:events:513:28)';
+
+    ngOnInit(): void {
+        if (environment?.isServer == 'testbazis') {
+            console.log('te2bazis now');
+        }
+        if (environment?.isServer == 'development1') {
+            console.log('dev now');
+        }
+    }
 }

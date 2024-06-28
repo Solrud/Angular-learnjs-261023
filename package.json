@@ -6,13 +6,15 @@
         "tsc": "tsc",
         "start": "ng serve",
         "build:dev": "ng build --configuration development",
-        "build:prod": "ng build --configuration production",
+        "build": "ng build",
+        "build:qa": "ng build --configuration qa",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "prettier:fix": "prettier --write",
         "prettier:fix:all": "prettier --write .",
         "lint": "ng lint",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "serve:testbazis": "ng serve --configuration testbazis"
     },
     "private": true,
     "dependencies": {
