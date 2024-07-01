@@ -65,6 +65,19 @@
                             ]
                         },
                         "testbazis": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "2mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "2mb"
+                                }
+                            ],
+                            "outputHashing": "all",
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
@@ -77,6 +90,12 @@
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "Angular-learnjs-261023:build:testbazis",
+                        "ssl": true,
+                        "sslCert": "src/assets/ssl/localhost.cer",
+                        "sslKey": "src/assets/ssl/localhost.key"
+                    },
                     "configurations": {
                         "production": {
                             "browserTarget": "Angular-learnjs-261023:build:production"
@@ -85,10 +104,7 @@
                             "browserTarget": "Angular-learnjs-261023:build:development"
                         },
                         "testbazis": {
-                            "browserTarget": "Angular-learnjs-261023:build:testbazis",
-                            "ssl": true,
-                            "sslCert": "src/assets/ssl/localhost.cer",
-                            "sslKey": "src/assets/ssl/localhost.key"
+                            "browserTarget": "Angular-learnjs-261023:build:testbazis"
                         }
                     },
                     "defaultConfiguration": "development"
