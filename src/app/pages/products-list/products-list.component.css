@@ -7,8 +7,19 @@
 }
 
 .inner-container-product-list{
-    width: 900px;
+    max-width: 900px;
+    flex-grow: 1;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+}
+
+@media(max-width: 579px) {
+    .inner-container-product-list{
+        max-width: 270px;
+        flex-grow: 1;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
