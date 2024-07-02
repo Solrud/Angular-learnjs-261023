@@ -1,0 +1,14 @@
+.container-product-list{
+    /*width: 100vw;*/
+    /*height: 100%;*/
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.inner-container-product-list{
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
