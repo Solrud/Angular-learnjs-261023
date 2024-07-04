@@ -15,14 +15,14 @@ export class AppComponent {
 
     // @ViewChild(SidenavComponent)
     // private readonly sidenavComponent?: SidenavComponent;
-    @ViewChild('sidenav')
-    private readonly sidenavComponent?: SidenavComponent;
+    // @ViewChild('sidenav')
+    // private readonly sidenavComponent?: SidenavComponent;
 
     onMenuClick(event: string) {
         // eslint-disable-next-line no-console
         console.log('Menu clicked', event);
         // this.needShowSidenav = !this.needShowSidenav;
 
-        this.sidenavComponent?.toggleSidenavOpened();
+        // this.sidenavComponent?.toggleSidenavOpened();
     }
 }
