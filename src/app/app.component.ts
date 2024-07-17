@@ -16,17 +16,26 @@ export class AppComponent {
         setTimeout(() => {
             this.switchTemplate = !this.switchTemplate;
             // or
+            // console.log(this.closeTemplate)
             this.closeTemplate = !this.closeTemplate;
+            // console.log('3000')
         }, 3000);
         setTimeout(() => {
             this.switchTemplate = !this.switchTemplate;
             // or
+            // console.log(this.closeTemplate)
+
             this.closeTemplate = !this.closeTemplate;
+            // console.log('6000')
         }, 6000);
         setTimeout(() => {
             this.switchTemplate = !this.switchTemplate;
+            // console.log(this.closeTemplate)
+
             // or
+            // console.log('9000')
             this.closeTemplate = !this.closeTemplate;
+            // console.log(this.closeTemplate)
         }, 9000);
     }
 }

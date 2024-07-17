@@ -1,0 +1,17 @@
+:host{
+    /*position: absolute;*/
+    /*top: 40px;*/
+    /*right: 20px;*/
+    /*z-index: 1;*/
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /*min-height: 30px;*/
+    background: #a2e5c3;
+    font-size: 20px;
+    /*padding: 20px;*/
+    border: #5e5e5e 2px solid;
+}
