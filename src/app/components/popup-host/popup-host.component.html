@@ -1,4 +1,9 @@
 <!--<div class="popup-container">-->
 <!--    <ng-container #viewPortPopUp></ng-container>-->
 <!--</div>-->
-<ng-container #viewPortPopUp></ng-container>
+<div class="host" [class.display-none]="ViewContainerLength">
+    <div class="modal-popup-card">
+        <ng-container #viewPortPopUp></ng-container>
+    </div>
+</div>
+

@@ -14,6 +14,8 @@ import {
   styleUrls: ['./popup-host.component.css']
 })
 export class PopupHostComponent implements OnChanges{
+    isEmptyViewContainer: boolean = true;
+
     @Input()
     template: TemplateRef<unknown> | null = null;
 
@@ -33,4 +35,7 @@ export class PopupHostComponent implements OnChanges{
         }
     }
 
+    get ViewContainerLength(){
+        return this.viewContainerPopUpContent?.length == 0;
+    }
 }

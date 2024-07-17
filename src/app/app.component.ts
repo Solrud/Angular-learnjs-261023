@@ -21,7 +21,7 @@ export class AppComponent {
             // console.log('3000')
         }, 3000);
         setTimeout(() => {
-            this.switchTemplate = !this.switchTemplate;
+            // this.switchTemplate = !this.switchTemplate;
             // or
             // console.log(this.closeTemplate)
 
