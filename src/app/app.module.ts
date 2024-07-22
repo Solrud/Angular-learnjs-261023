@@ -9,6 +9,8 @@ import {HeaderModule} from './components/header/header.module';
 import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {PopupHostModule} from "./components/popup-host/popup-host.module";
+import {InsertShadowDirective} from "./shared/insert-shadow/insert-shadow.directive";
+import {InsertShadowModule} from "./shared/insert-shadow/insert-shadow.module";
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,7 +23,8 @@ import {PopupHostModule} from "./components/popup-host/popup-host.module";
         ProductsListModule,
         SidenavModule,
         MatListModule,
-        PopupHostModule
+        PopupHostModule,
+        InsertShadowModule
     ],
     bootstrap: [AppComponent],
 })

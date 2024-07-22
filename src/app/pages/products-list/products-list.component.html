@@ -1,5 +1,12 @@
-<app-card class="card" [product]="products[0]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[1]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[2]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[3]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[4]" (buy)="onProductBuy($event)"></app-card>
+<ng-template [ngIf]="products" let-productFromContext [ngIfElse]="loaderTemplate">
+<!--    {{defaultValueFromContext}}-->
+    <app-card class="card" [product]="productFromContext[0] || null" (buy)="onProductBuy($event)"></app-card>
+    <app-card class="card" [product]="productFromContext[1] || null" (buy)="onProductBuy($event)"></app-card>
+    <app-card class="card" [product]="productFromContext[2] || null" (buy)="onProductBuy($event)"></app-card>
+    <app-card class="card" [product]="productFromContext[3] || null" (buy)="onProductBuy($event)"></app-card>
+    <app-card class="card" [product]="productFromContext[4] || null" (buy)="onProductBuy($event)"></app-card>
+</ng-template>
+
+<ng-template #loaderTemplate >
+        <mat-spinner  [color]="'accent'"></mat-spinner>
+</ng-template>

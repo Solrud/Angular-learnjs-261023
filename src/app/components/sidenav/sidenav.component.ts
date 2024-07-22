@@ -59,7 +59,6 @@ export class SidenavComponent implements OnInit {
         // }
 
         // eslint-disable-next-line no-console
-        console.log(this.matListComponent);
     }
 
     // ngDoCheck(): void {
