@@ -15,35 +15,26 @@
     <app-card class="card" [product]="products?.[4] || null"></app-card>
 </ng-template> -->
 
-<ng-template let-value [ngIf]="products" [ngIfElse]="loaderTemplate">
-    <!-- Раскомментировать div при выполнении ДЗ -->
-    <div appScrollWithLoading class="scroll-container" (loadData)="onLoad($event)">
-        <app-card class="card" [product]="value[0] || null"></app-card>
-        <app-card class="card" [product]="value[1] || null"></app-card>
-        <app-card class="card" [product]="value[2] || null"></app-card>
-        <app-card class="card" [product]="value[3] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-        <app-card class="card" [product]="value[4] || null"></app-card>
-    </div>
-</ng-template>
+<!--<ng-template let-value [ngIf]="products" [ngIfElse]="loaderTemplate">-->
+<!-- Раскомментировать div при выполнении ДЗ -->
+
+{{ data }}
+
+<div
+    *ngIf="products; else loaderTemplate; $implicit as value"
+    appScrollWithLoading
+    class="scroll-container"
+    (loadData)="onLoad($event)"
+>
+    <app-card
+        *ngFor="let product of products; trackBy: trackById; let last = count; let index = index"
+        class="card"
+        [product]="product"
+    >
+        <span>{{ index + 1 }} {{ last }}</span>
+    </app-card>
+</div>
+<!--</ng-template>-->
 
 <ng-template #loaderTemplate>
     <mat-spinner></mat-spinner>
