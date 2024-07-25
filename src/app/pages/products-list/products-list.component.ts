@@ -39,7 +39,7 @@ export class ProductsListComponent implements OnInit {
         setTimeout(() => {
             this.productsStore = productsMock;
             this.changeDetectorRef.markForCheck();
-        }, 4000);
+        }, 500);
         // setTimeout(() => {
         //     // this.productsStore = productsMock.map(item => ({...item, feedbacksCount: 2}));
         //     productsMock.forEach(item => {

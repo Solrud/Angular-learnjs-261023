@@ -1,23 +1,6 @@
-<!-- <ng-template let-value [appIf]="products"> -->
-<!-- <ng-template
-    [ngIf]="products"
-    [ngIfElse]="loaderTemplate"
-    [ngIfThen]="loaderTemplate"
-    let-valueProp="ngIf"
-    let-value
-> -->
-<!-- <div
-    *ngIf="products; else loaderTemplate; let valueProp = ngIf; let value"
-    class="scroll-container"
-> -->
-<!-- <div
-    *ngIf="products; else loaderTemplate; ngIf as valueProp; $implicit as value"
-    class="scroll-container"
-> -->
-<!-- {{ data }} -->
 <div *ngIf="products as valueProp; else loaderTemplate; let value" class="scroll-container">
     <!-- Раскомментрировать для ДЗ -->
-    <!-- <ng-container
+    <ng-container
         *appPagination="
             let productsGroup of products;
             chankSize: 4;
@@ -25,26 +8,40 @@
             let activeIndex = index;
             let next = next;
             let back = back;
-            let selectIndex = selectIndex
+            let selectIndex = selectIndex;
+            let isFirstPage = isFirstPage;
+            let isLastPage = isLastPage
         "
-    > -->
-    <div class="cards">
-        <app-card
-            *ngFor="let product of products; trackBy: trackById"
-            class="card"
-            [product]="product"
-        ></app-card>
-    </div>
-    <div class="pagination">
-        <!-- Add pagination control -->
-    </div>
-    <!-- </ng-container> -->
-    <!-- <app-card class="card" [product]="value[1]"></app-card>
-    <app-card class="card" [product]="value[2]"></app-card>
-    <app-card class="card" [product]="value[3]"></app-card>
-    <app-card class="card" [product]="value[4]"></app-card> -->
+    >
+        <div class="cards">
+            <app-card
+                *ngFor="let product of productsGroup; trackBy: trackById"
+                class="card"
+                [product]="product"
+            ></app-card>
+        </div>
+        <div class="pagination-container">
+            <div class="paginator">
+                <button mat-raised-button color="primary" [disabled]="isFirstPage" (click)="back()">
+                    <- Назад
+                </button>
+                <div class="">
+                    <button
+                        *ngFor="let index = index; of: [].constructor(pageIndexes)"
+                        mat-button
+                        [class.activeIndex]="index === activeIndex - 1"
+                        (click)="selectIndex(index)"
+                    >
+                        {{ index + 1 }}
+                    </button>
+                </div>
+                <button mat-raised-button color="primary" [disabled]="isLastPage" (click)="next()">
+                    Вперед ->
+                </button>
+            </div>
+        </div>
+    </ng-container>
 </div>
-<!-- </ng-template> -->
 
 <ng-template #loaderTemplate>
     <mat-spinner></mat-spinner>

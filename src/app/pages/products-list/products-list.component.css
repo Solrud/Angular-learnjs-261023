@@ -32,9 +32,19 @@
     width: 100%;
 }
 
-.pagination {
+.pagination-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+.paginator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.activeIndex {
+    background-color: #ff4081;
+    color: white !important;
 }
