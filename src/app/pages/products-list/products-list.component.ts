@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    inject,
+    OnInit,
+} from '@angular/core';
 import {productsMock} from '../../shared/products/products.mock';
 import {IProduct} from '../../shared/products/product.interface';
 
@@ -35,18 +42,10 @@ export class ProductsListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // setInterval(() => {}, 1000);
         setTimeout(() => {
             this.productsStore = productsMock;
             this.changeDetectorRef.markForCheck();
         }, 500);
-        // setTimeout(() => {
-        //     // this.productsStore = productsMock.map(item => ({...item, feedbacksCount: 2}));
-        //     productsMock.forEach(item => {
-        //         item.feedbacksCount = 2;
-        //     });
-        //     this.productsStore = [...productsMock];
-        // }, 6000);
     }
 
     trackById(_index: number, {_id}: IProduct) {

@@ -22,5 +22,6 @@ import {SidenavModule} from './components/sidenav/sidenav.module';
         MatListModule,
     ],
     bootstrap: [AppComponent],
+    providers: [{provide: 'name', useValue: 'Matthew'}],
 })
 export class AppModule {}

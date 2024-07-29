@@ -1,5 +1,13 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {ApplicationConfig} from '../../shared/application-config/application-config.interface';
+import {NamedChunksPlugin} from '@angular-devkit/build-angular/src/tools/webpack/plugins/named-chunks-plugin';
 
 @Component({
     selector: 'app-header',
@@ -12,8 +20,14 @@ export class HeaderComponent {
 
     @Output() readonly menuClick = new EventEmitter<void>();
 
+    constructor(@Inject('name') private name: string) {}
+
     get data(): string {
         return 'Yes, data';
+    }
+
+    get myName(): string {
+        return this.name;
     }
 
     onMenuClick(_event: MouseEvent) {

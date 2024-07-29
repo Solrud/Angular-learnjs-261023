@@ -36,4 +36,8 @@ export class CardComponent {
     isStarActive(starIndex: number): boolean {
         return !!(this.product && this.product.rating >= starIndex);
     }
+
+    getPrice(price: number | undefined): string {
+        return `${price || '-'} $`;
+    }
 }
