@@ -24,10 +24,25 @@
             let selectIndex = selectIndex
         "
     > -->
+
+    <mat-form-field class="example-form-field">
+        <mat-label>Фильтрация</mat-label>
+        <input matInput type="text" [(ngModel)]="inputFilterValue" />
+        <button
+            *ngIf="inputFilterValue"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="inputFilterValue = ''"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
     <ng-container
         *appPagination="
-            let productsGroup of products;
-            chankSize: 4;
+            let productsGroup of products | productsFilter : inputFilterValue;
+            chankSize: 2;
             let pageIndexes = pageIndexes;
             let activeIndex = index;
             let next = next;

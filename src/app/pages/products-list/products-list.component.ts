@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
 import {IProduct} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
+import {IProductImage} from '../../shared/products/product-image.interface';
 
 @Component({
     selector: 'app-products-list',
@@ -14,8 +15,9 @@ export class ProductsListComponent implements OnInit {
 
     readonly products$ = this.productsStoreService.products$;
 
-    // for easy
-    name = 'Мышь';
+    selectedIProductProperty: string = 'name';
+
+    inputFilterValue = '';
 
     // for hard
     readonly propertyName = 'feedbacksCount' as const; // keyof IProduct
