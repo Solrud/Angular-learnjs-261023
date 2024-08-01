@@ -10,6 +10,8 @@ import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {ProductsStoreService} from './shared/products/products-store.service';
 import {ProductsApiService} from './shared/products/products-api.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,9 +24,15 @@ import {ProductsApiService} from './shared/products/products-api.service';
         ProductsListModule,
         SidenavModule,
         MatListModule,
+        HttpClientModule,
     ],
     bootstrap: [AppComponent],
     providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            multi: true,
+            useClass: BaseUrlInterceptor,
+        },
         // {
         //     provide: ProductsStoreService, // token
         //     useClass: ProductsStoreService,

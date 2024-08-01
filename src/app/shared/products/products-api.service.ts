@@ -1,11 +1,17 @@
-import {map, Observable, of} from 'rxjs';
-import {Injectable} from '@angular/core';
-import {IProduct} from './product.interface';
-import {productsMock} from './products.mock';
+import {map} from 'rxjs';
+import {Inject, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {IProductsDTO} from './iproducts-dto';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ProductsApiService {
-    getProducts$(): Observable<IProduct[]> {
-        return of({data: {items: productsMock}}).pipe(map(({data}) => data.items));
+    constructor(private httpClient: HttpClient) {}
+
+    getProducts$(): any {
+        return this.httpClient
+            .get<IProductsDTO>('/products/suggestion')
+            .pipe(map(({data}) => data.items));
     }
 }

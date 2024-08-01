@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    Inject,
+    OnInit,
+    Optional,
+    Self,
+    SkipSelf,
+} from '@angular/core';
 import {IProduct} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
 import {IProductImage} from '../../shared/products/product-image.interface';
@@ -14,10 +23,6 @@ export class ProductsListComponent implements OnInit {
     // private readonly elementRef = inject(ElementRef);
 
     readonly products$ = this.productsStoreService.products$;
-
-    selectedIProductProperty: string = 'name';
-
-    inputFilterValue = '';
 
     // for hard
     readonly propertyName = 'feedbacksCount' as const; // keyof IProduct
@@ -36,15 +41,11 @@ export class ProductsListComponent implements OnInit {
     // ) {}
     constructor(
         private readonly productsStoreService: ProductsStoreService,
-        @Inject('ProductsStoreService')
-        private readonly productsStoreServiceStr: ProductsStoreService, // @Inject('name') private readonly name: string,
+        private readonly elementRef: ElementRef,
+        @Inject('fffffff') @SkipSelf() @Optional() private testNullToken: ElementRef,
     ) {
-        // eslint-disable-next-line no-console
-        console.log(this.productsStoreServiceStr, this.productsStoreService);
-        // eslint-disable-next-line no-console
-        console.log(this.productsStoreServiceStr === this.productsStoreService);
-        // eslint-disable-next-line no-console
-        // console.log(this.name);
+        console.log(this.elementRef);
+        console.log(this.testNullToken);
     }
 
     ngOnInit(): void {
