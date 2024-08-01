@@ -16,7 +16,14 @@
         class="example-icon favorite-icon"
         (click)="openPopup(favoritePopupTempalte)"
     >
-        <mat-icon>favorite</mat-icon>
+        <mat-icon
+            matBadge="1"
+            matBadgeColor="warn"
+            [matBadgeHidden]="toShowBadge"
+            [matBadgeSize]="'small'"
+        >
+            favorite
+        </mat-icon>
     </button>
     <button mat-icon-button aria-label="Example icon-button with share icon" class="example-icon">
         <mat-icon>share</mat-icon>
@@ -24,7 +31,7 @@
 </mat-toolbar>
 
 <ng-template #favoritePopupTempalte let-title>
-    {{ title }}
-    <h1>No, you are favorite</h1>
-    <button (click)="closePopup()">I know</button>
+    <h2>{{ title }}</h2>
+    <h3>No, you are favorite ❤️</h3>
+    <button mat-raised-button color="primary" (click)="closePopup()">I know ❤</button>
 </ng-template>

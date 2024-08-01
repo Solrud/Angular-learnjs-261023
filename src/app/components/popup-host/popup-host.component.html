@@ -1,3 +1,5 @@
-<div class="content-wrapper">
-    <ng-container *ngTemplateOutlet="template"></ng-container>
+<div *ngIf="popupTemplateListener$ | async as popupTemplateListener" class="content-wrapper">
+    <ng-container
+        *ngTemplateOutlet="popupTemplateListener.template; context: popupTemplateListener.context"
+    ></ng-container>
 </div>

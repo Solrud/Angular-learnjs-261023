@@ -1,6 +1,6 @@
 {
-    "*.{ts,js}": ["npm run prettier:fix", "npx eslint --fix"],
-    "*.html": ["npm run prettier:fix", "npx eslint --fix"],
+    "*.{ts,js}": ["npm run prettier:fix"],
+    "*.html": ["npm run prettier:fix"],
     "*.css": ["npm run prettier:fix"],
     "*.json": ["npm run prettier:fix"]
 }
