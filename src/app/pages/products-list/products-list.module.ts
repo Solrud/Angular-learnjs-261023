@@ -9,6 +9,7 @@ import {IfModule} from '../../shared/if/if.module';
 import {PaginationModule} from '../../shared/pagination/pagination.module';
 import {MyAsyncModule} from '../../shared/my-async/my-async.module';
 import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-property.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [ProductsListComponent],
@@ -22,6 +23,7 @@ import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-
         PaginationModule,
         MyAsyncModule,
         FilterByPropertyModule,
+        RouterModule,
     ],
     exports: [ProductsListComponent],
     // providers: [

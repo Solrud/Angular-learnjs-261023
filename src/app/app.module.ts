@@ -11,6 +11,8 @@ import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
+import {NotFoundModule} from './pages/not-found/not-found.module';
+import {ProductModule} from './pages/product/product.module';
 
 // export const baseUrlToken = {name: 'baseUrl'};
 
@@ -27,6 +29,8 @@ import {PopupHostModule} from './components/popup-host/popup-host.module';
         MatListModule,
         HttpClientModule,
         PopupHostModule,
+        NotFoundModule,
+        ProductModule,
     ],
     bootstrap: [AppComponent],
     providers: [

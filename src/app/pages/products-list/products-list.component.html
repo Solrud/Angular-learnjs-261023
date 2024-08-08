@@ -14,6 +14,7 @@
             <app-card
                 *ngFor="let product of productsGroup; trackBy: trackById"
                 class="card"
+                [routerLink]="['/product', product._id]"
                 [product]="product"
             ></app-card>
         </div>

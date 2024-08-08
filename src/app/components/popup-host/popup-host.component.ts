@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {PopUpService} from '../../shared/popup-service/pop-up.service';
 import {tap} from 'rxjs/operators';
 
@@ -7,8 +7,13 @@ import {tap} from 'rxjs/operators';
     templateUrl: './popup-host.component.html',
     styleUrls: ['./popup-host.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class.empty]': 'this.isEmpty',
+    },
 })
 export class PopupHostComponent {
+    isEmpty = true;
+
     popupTemplateListener$ = this.popupService.popupTemplate$.pipe(
         tap(templateObj => {
             this.isEmpty = !templateObj?.template;
@@ -17,6 +22,9 @@ export class PopupHostComponent {
 
     constructor(private popupService: PopUpService) {}
 
-    @HostBinding('class.empty')
-    isEmpty = true;
+    @HostListener('contextmenu', ['$event'])
+    contextMenuClick(event: Event) {
+        console.log(event);
+        event.preventDefault();
+    }
 }

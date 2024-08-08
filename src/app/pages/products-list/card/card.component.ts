@@ -8,6 +8,7 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {IProduct} from '../../../shared/products/product.interface';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-card',
@@ -20,7 +21,10 @@ export class CardComponent {
 
     @Output() readonly buy = new EventEmitter<IProduct['_id']>();
 
-    constructor(@SkipSelf() private readonly parentElementRef: ElementRef) {
+    constructor(
+        @SkipSelf() private readonly parentElementRef: ElementRef,
+        private activatedRoute: ActivatedRoute,
+    ) {
         // eslint-disable-next-line no-console
         console.log(this.parentElementRef);
     }

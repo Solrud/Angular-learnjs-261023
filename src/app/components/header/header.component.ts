@@ -33,7 +33,7 @@ export class HeaderComponent {
 
     openPopup(_template: TemplateRef<IPopUpContext>) {
         this.toShowBadge = true;
-        const context: IPopUpContext = {$implicit: 'ЛАЙК!'};
+        const context: IPopUpContext = {$implicit: 'Значение из контекстной переменной'};
         const templateObject: IPopUp = {
             template: _template,
             context: context,

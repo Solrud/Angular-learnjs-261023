@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {IProduct} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-products-list',
@@ -20,11 +21,8 @@ export class ProductsListComponent implements OnInit {
 
     constructor(
         private readonly productsStoreService: ProductsStoreService,
-        @Inject('123') @Optional() @SkipSelf() private readonly parentElementRef: any | null,
-    ) {
-        // eslint-disable-next-line no-console
-        console.log(this.parentElementRef);
-    }
+        private readonly routerService: Router,
+    ) {}
 
     ngOnInit(): void {
         this.productsStoreService.loadProducts();
@@ -32,5 +30,9 @@ export class ProductsListComponent implements OnInit {
 
     trackById(_index: number, {_id}: IProduct) {
         return _id;
+    }
+
+    onClickNavigateToProduct() {
+        this.routerService.navigate(['product', 'id']);
     }
 }
