@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {filter, map, switchMap, tap} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
@@ -9,7 +9,7 @@ import {ProductsStoreService} from '../../shared/products/products-store.service
     styleUrls: ['./product.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit{
     // readonly product$ = of('portativnaa-kolonka-huawei-cm510-cernyj').pipe(
     readonly product$ = this.activatedRoute.paramMap.pipe(
         map(paramMap => paramMap.get('id')),
@@ -28,6 +28,12 @@ export class ProductComponent {
     ) {
         // console.log('constructor', this.activatedRoute.snapshot.paramMap.get('id'));
         // this.activatedRoute.queryParams.subscribe(console.log);
+    }
+
+    ngOnInit(): void {
+        this.product$.subscribe(res => {
+            if (!res) this.router.navigate(['/products-list'])
+        })
     }
 
     navigateToType() {

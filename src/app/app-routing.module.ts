@@ -15,19 +15,42 @@ const routes: Routes = [
         pathMatch: 'full',
         redirectTo: 'products-list',
     },
+
+
+     // ТАК РАБОТАЕТ
+    {
+        path: 'products-list/:sub-category',
+        component: ProductsListComponent,
+    },
     {
         path: 'products-list', // ['products-list']
         component: ProductsListComponent,
     },
+
+
+
+    // а так не работает
+    // {
+    //     path: 'products-list', // ['products-list']
+    //     component: ProductsListComponent,
+    //     children: [
+    //         {
+    //             path: '',
+    //             pathMatch:'full',
+    //             component: ProductsListComponent
+    //         },
+    //         {
+    //             path: ':sub-category',
+    //             component: ProductsListComponent
+    //         },
+    //     ]
+    // },
+
     {
         path: 'product/:id', // ['product', 'id']
         component: ProductComponent,
         children: [
-            {
-                path: '',
-                pathMatch: 'full',
-                redirectTo: 'description',
-            },
+
             {
                 path: 'description',
                 component: DescriptionComponent,
@@ -36,7 +59,7 @@ const routes: Routes = [
                 path: 'type',
                 component: TypeComponent,
             },
-        ],
+        ] ,
     },
     {
         path: '**',

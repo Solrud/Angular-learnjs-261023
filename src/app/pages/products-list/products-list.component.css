@@ -42,3 +42,8 @@
 .pagination__page-number_active {
     color: blue;
 }
+.n-f-c-t{
+    font-size: 50px;
+    color: #ff3e3e;
+    font-weight: 600;
+}
