@@ -1,13 +1,10 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {ProductsListComponent} from './pages/products-list/products-list.component';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {ProductComponent} from './pages/product/product.component';
-import {ProductsListModule} from './pages/products-list/products-list.module';
-import {ProductModule} from './pages/product/product.module';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
-import {NotFoundModule} from './pages/not-found/not-found.module';
-import {TypeComponent} from './pages/product/type/type.component';
-import {DescriptionComponent} from './pages/product/description/description.component';
+import {NotFoundModule} from "./pages/not-found/not-found.module";
+import {questionCanActivateGuard} from "./shared/test-guards/question-can-activate.guard";
+import {canMatchGuard} from "./shared/test-guards/can-match.guard";
 
 const routes: Routes = [
     {
@@ -17,33 +14,17 @@ const routes: Routes = [
     },
     {
         path: 'products-list', // ['products-list']
-        children: [
-            {
-                path: '',
-                pathMatch:'full',
-                component: ProductsListComponent
-            },
-            {
-                path: ':sub-category',
-                component: ProductsListComponent
-            },
-        ]
+        loadChildren: () => import('./pages/products-list/products-list.module').then(m => m.ProductsListModule),
     },
 
     {
         path: 'product/:id', // ['product', 'id']
         component: ProductComponent,
-        children: [
-
-            {
-                path: 'description',
-                component: DescriptionComponent,
-            },
-            {
-                path: 'type',
-                component: TypeComponent,
-            },
-        ] ,
+        loadChildren: () => import('./pages/product/product.module').then(m => m.ProductModule),
+        canActivate: [questionCanActivateGuard],
+        canMatch: [canMatchGuard],
+        // canDeactivate: [canDeactivateGuard],
+        // canActivateChild: [canActivateChildGuard]
     },
     {
         path: '**',
@@ -52,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes), ProductsListModule, ProductModule, NotFoundModule],
+    imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}), NotFoundModule],
     exports: [RouterModule],
 })
 export class AppRoutingModule {}

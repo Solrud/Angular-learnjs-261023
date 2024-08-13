@@ -13,14 +13,18 @@ import {filter, map, switchMap, tap} from "rxjs/operators";
 export class ProductsListComponent implements OnInit {
     // readonly products$ = this.productsStoreService.products$;
 
-    products$ = this.activatedRoute.paramMap.pipe(
-        map(paramMap => paramMap.get('sub-category')),
-        tap( subCategoryId => {
-            console.log(subCategoryId)
-            this.productsStoreService.loadProducts(subCategoryId);
-        }),
-        switchMap(()=> this.productsStoreService.products$)
+    readonly products$ = this.activatedRoute.data.pipe(
+        map(({products}) => products as IProduct[])
     )
+
+    // products$ = this.activatedRoute.paramMap.pipe(
+    //     map(paramMap => paramMap.get('sub-category')),
+    //     tap( subCategoryId => {
+    //         console.log(subCategoryId)
+    //         this.productsStoreService.loadProducts(subCategoryId);
+    //     }),
+    //     switchMap(()=> this.productsStoreService.products$)
+    // )
 
     constructor(
         private readonly productsStoreService: ProductsStoreService,

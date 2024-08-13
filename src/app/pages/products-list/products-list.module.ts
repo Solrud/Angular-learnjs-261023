@@ -10,6 +10,8 @@ import {IfModule} from '../../shared/if/if.module';
 import {PaginationModule} from '../../shared/pagination/pagination.module';
 import {MyAsyncModule} from '../../shared/my-async/my-async.module';
 import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-property.module';
+import {ProductRoutingModule} from "../product/product-routing.module";
+import {ProductsListRoutingModule} from "./products-list-routing.module";
 
 @NgModule({
     declarations: [ProductsListComponent],
@@ -24,6 +26,7 @@ import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-
         MyAsyncModule,
         FilterByPropertyModule,
         RouterModule,
+        ProductsListRoutingModule
     ],
     exports: [ProductsListComponent],
 })

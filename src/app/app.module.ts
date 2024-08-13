@@ -10,6 +10,8 @@ import {HeaderModule} from './components/header/header.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
+import {ProductRoutingModule} from "./pages/product/product-routing.module";
+import {ProductsListRoutingModule} from "./pages/products-list/products-list-routing.module";
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,6 +25,8 @@ import {PopupHostModule} from './components/popup-host/popup-host.module';
         MatListModule,
         HttpClientModule,
         PopupHostModule,
+        ProductRoutingModule,
+        ProductsListRoutingModule
     ],
     bootstrap: [AppComponent],
     providers: [
